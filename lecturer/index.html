@@ -1,0 +1,1112 @@
+<!DOCTYPE html>
+<html lang="en">
+<title>Lecturer</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="css/w3.css">
+<link rel="stylesheet" href="css/css.css">
+
+
+<style>
+body,h1,h2,h3,h4,h5 {font-family: "Poppins", sans-serif}
+body {font-size:16px;}
+.w3-half img{margin-bottom:-6px;margin-top:16px;opacity:0.8;cursor:pointer}
+.w3-half img:hover{opacity:1}
+
+table 
+{
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th 
+{
+  text-align: left;
+  padding: 8px;
+}
+
+.main-block {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      padding: 25px;
+      }
+	  .left-part, form {
+      padding: 25px;
+      }
+      .left-part {
+      text-align: center;
+      }
+      .fa-graduation-cap {
+      font-size: 72px;
+      }
+      form {
+      background: rgba(255, 255, 255, 0.7); 
+      }
+      .title {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+      }
+      .info {
+      display: flex;
+      flex-direction: column;
+      }
+      input, select {
+      padding: 5px;
+      margin-bottom: 30px;
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid #f44336;
+      }
+      input::placeholder {
+      color: #ed8d51;
+      }
+      option:focus {
+      border: none;
+      }
+      option {
+      background: white; 
+      border: none;
+      }
+      .checkbox input {
+      margin: 0 10px 0 0;
+      vertical-align: middle;
+      }
+      .checkbox a {
+      color: #26a9e0;
+      }
+      .checkbox a:hover {
+      color: #85d6de;
+      }
+      .btn-item, button {
+      padding: 10px 5px;
+      margin-top: 20px;
+      border-radius: 5px; 
+      border: none;
+      background: #26a9e0; 
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 400;
+      color: #fff;
+      }
+      .btn-item {
+      display: inline-block;
+      margin: 20px 5px 0;
+      }
+      button {
+      width: 100%;
+      }
+      button:hover, .btn-item:hover {
+      background: #85d6de;
+      }
+      @media (min-width: 568px) {
+      html, body {
+      height: 100%;
+      }
+      .main-block {
+      flex-direction: row;
+      height: calc(100% - 50px);
+      }
+      .left-part, form {
+      flex: 1;
+      height: auto;
+      }
+	  .tab {
+		overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #ff775c;
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-size: 17px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #000;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color: #000;
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: ;
+  border-top: none;
+}
+
+table, td, th, tr {
+  text-align: center;
+}
+
+
+th {
+  text-align: center;
+}
+      }
+</style>
+<body>
+
+<!------------------------------------------------- Sidebar/menu ------------------------------------------------------------->
+
+<nav class="w3-sidebar w3-red w3-collapse w3-top w3-large w3-padding" style="z-index:3;width:300px;font-weight:bold;" id="mySidebar"><br>
+  <a href="javascript:void(0)" onclick="w3_close()" class="w3-button w3-hide-large w3-display-topleft" style="width:100%;font-size:22px">Close Menu</a>
+  <div class="w3-container">
+    <h3 class="w3-padding-64"><b>Hi<br>Lecturer</b></h3>
+  </div>
+  
+  <div class="w3-bar-block">
+    <a href="#" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Home</a> 
+	<a   class="w3-bar-item ">Manage Personal Details</a> 
+    <a href="#view" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">View & Edit</a>
+	<a  class="w3-bar-item">Manage Carry Marks</a> 
+    <a href="#viewcm" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">View</a>
+    <a href="#setupcm" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Setup</a>
+	<a href="#addcm" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Add</a>
+	<a href="#deletecm" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Delete</a>
+	<a href="#commentcm" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Comment</a>
+	<a href="../index.html" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Log Out</a>
+  </div>
+</nav>
+
+<!-- Top menu on small screens -->
+
+<header class="w3-container w3-top w3-hide-large w3-red w3-xlarge w3-padding">
+  <a href="javascript:void(0)" class="w3-button w3-red w3-margin-right" onclick="w3_open()">☰</a>
+  <span>Mycarrymark</span>
+</header>
+
+<!-- Overlay effect when opening sidebar on small screens -->
+	<div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+<!-- !PAGE CONTENT! -->
+	<div class="w3-main" style="margin-left:340px;margin-right:40px">
+
+
+<!---------------------------------------------- Header --------------------------------------------------------------------------->
+	<div class="w3-container" style="margin-top:80px" id="#">
+		<h1 class="w3-jumbo"><b>Mycarrymark</b></h1>  
+		<hr style="width:50px;border:5px solid red" class="w3-round">
+	<div class="w3-container">
+  
+		<h2>HOME</h2>
+  
+<div class="w3-content" style="max-width:1200px">
+
+	<img class="mySlides" src="img/1.jpg" style="width:100%;display:none">
+	<img class="mySlides" src="img/2.jpg" style="width:100%">
+	<img class="mySlides" src="img/3.jpg" style="width:100%;display:none">
+
+  <div class="w3-row-padding w3-section">
+    <div class="w3-col s4">
+      <img class="demo w3-opacity w3-hover-opacity-off" src="img/1.jpg" style="width:100%;cursor:pointer" onclick="currentDiv(1)">
+    </div>
+    <div class="w3-col s4">
+      <img class="demo w3-opacity w3-hover-opacity-off" src="img/2.jpg" style="width:100%;cursor:pointer" onclick="currentDiv(2)">
+    </div>
+    <div class="w3-col s4">
+      <img class="demo w3-opacity w3-hover-opacity-off" src="img/3.jpg" style="width:100%;cursor:pointer" onclick="currentDiv(3)">
+    </div>
+  </div>
+  
+</div>
+
+<script>
+function currentDiv(n) {
+  showDivs(slideIndex = n);
+}
+
+function showDivs(n) {
+  var i;
+  var x = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("demo");
+  if (n > x.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = x.length}
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" w3-opacity-off", "");
+  }
+  x[slideIndex-1].style.display = "block";
+  dots[slideIndex-1].className += " w3-opacity-off";
+}
+</script>
+		<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+	</div>
+	
+<!----------------------------------View Personal Detail------------------------------>
+
+  <div class="w3-container" style="margin-top:80px" id="view">
+		    <h1 class="w3-xxxlarge w3-text-red"><b>View : Lecturer Details</b></h1>
+			<p id="editview">
+			
+			<div class="info">
+            <label for="name">Full Name : </label>
+			<input  type="text" class="validate" value="Woo Dohwan" readonly="readonly">
+
+				<label for="user_name">Username : </label>
+				<input  type="text" class="validate" value="prof.wan" readonly="readonly">
+
+				<label for="pass">Password : </label>
+				<input id="pass" type="password" class="validate" value="yeeeehawww24" readonly="readonly">
+ 			  
+				<label for="textarea1">Address : </label>
+				<input id="textarea1" value="B1 Halaman Damai, Jalan Tenang 2, Taman Harmoni 3" class="form-control" type="text" rows="1" cols="70" readonly></input>
+
+				<label for="city">City : </label>
+                <input id="city" type="text" class="validate" value="Sungai Petani" readonly="readonly">
+
+				<label for="state">State : </label>
+                <input id="state" type="text" class="validate" value="Kedah" readonly="readonly">
+
+				<label for="zip">Zip Code : </label>
+                <input id="zip" type="number" class="validate" value="08000" readonly="readonly">
+
+				<label for="country">Country : </label>
+                <input id="country" type="text" class="validate" value="Malaysia" readonly="readonly">
+           
+				<label for="phone">Phone : </label>
+				<input id="phone" type="number" class="validate" value="0175256535" readonly="readonly">
+
+				<label for="email">Email : </label>
+				<input id="email" type="email" class="validate" value="woodowhan@edu.my" readonly="readonly">
+
+				<label for="status">Martial Status : </label>
+                <input id="status" type="text" class="validate" value="Single" readonly="readonly">
+
+				<label for='class'>Teaching Class : </label><br>
+                <input id="class" type="text" class="validate" value="KCS1104A" readonly="readonly"><br>
+				<input id="class" type="text" class="validate" value="KCS1104G" readonly="readonly"><br>
+				<input id="class" type="text" class="validate" value="KCS1104I" readonly="readonly"><br>
+				
+			<p id="demo"></p>
+			</div>
+			</p>
+
+			<tr>
+			<td colspan=>
+				<button onclick="myFunction()">Edit</button>
+				<button type="button" class="w3-button w3-theme-d2 w3-margin-bottom"><i class="fa fa-submit"></i>Submit</button>
+			</td>
+			</tr>
+			
+			<script>
+			function myFunction() {
+			document.getElementById("editview").contentEditable = true;
+			document.getElementById("demo").innerHTML = "Edit Mode";
+			}
+			</script>
+  
+  
+  <!--------------------------------------------- View Carry Mark------------------------------------------------>
+  
+  <div class="w3-container" id="viewcm" style="margin-top:75px">
+    <h1 class="w3-xxxlarge w3-text-red"><b>View : Carry Mark</b></h1>
+    <hr style="width:50px;border:5px solid red" class="w3-round">
+  </div>
+  
+  		<table>
+			<tr>
+			
+				<td>Semester: </td>
+				<td><select name="class" class="form-control selectpicker"/>
+				<option value=" " >Please select semester</option>
+				<option>Sesi 1 2018/2019</option>
+				<option>Sesi 2 2018/2019</option>
+				<option>Sesi 1 2019/2020</option>
+				<option>Sesi 2 2019/2020</option>
+				</select>
+				</td>
+			
+				<td>Subject: </td>
+				<td><select name="class" class="form-control selectpicker"/>
+				<option value=" " >Please select subject</option>
+				<option>CSC204</option>
+				<option>CSC248</option>
+				<option >CSC253</option>
+				<option >ITS332</option>
+				</select>
+				</td>
+			</tr>
+		</table>
+		<button type="button" class="w3-button w3-theme-d2 w3-margin-bottom"><i class="fa fa-submit"></i>Submit</button>
+  
+  <div class="w3-row-padding w3-grayscale">
+<div class="tab">
+  <button class="tablinks" onclick="openClass(event, 'KCS1104A')">KCS1104A</button>
+  <button class="tablinks" onclick="openClass(event, 'KCS1104G')">KCS1104G</button>
+  <button class="tablinks" onclick="openClass(event, 'KCS1104I')">KCS1104I</button>
+</div>
+
+<div id="KCS1104A" class="tabcontent">
+	<table>
+  <tr>
+    <th>ID</th>
+    <th>Assignment 1 (20%)</th>
+    <th>Assignment 2 (20%)</th>
+	<th>Test 1 (30%)</th>
+	<th>Test 2 (30%)</th>
+  </tr>
+  <tr>
+    <td>2018283749</td>
+    <td>20</td>
+    <td>12</td>
+	<td>30</td>
+	<td>29</td>
+  </tr>
+  <tr>
+    <td>2018192804</td>
+    <td>20</td>
+    <td>18</td>
+	<td>27</td>
+	<td>27</td>
+  </tr>
+  <tr>
+    <td>2018613456</td>
+    <td>9</td>
+    <td>7</td>
+	<td>25</td>
+	<td>30</td>
+  </tr>
+  <tr>
+    <td>2018679809</td>
+    <td>7</td>
+    <td>20</td>
+	<td>28</td>
+	<td>28</td>
+  </tr>
+  <tr>
+    <td>2018672839</td>
+    <td>18</td>
+    <td>19</td>
+	<td>28</td>
+	<td>22</td>
+  </tr>
+  <tr>
+    <td>2018712983</td>
+    <td>14</td>
+    <td>16</td>
+	<td>23</td>
+	<td>30</td>
+  </tr>
+</table>
+</div>
+
+<div id="KCS1104G" class="tabcontent">
+	<table>
+  <tr>
+    <th>ID</th>
+    <th>Assignment 1 (20%)</th>
+    <th>Assignment 2 (20%)</th>
+	<th>Test 1 (30%)</th>
+	<th>Test 2 (30%)</th>
+  </tr>
+  <tr>
+    <td>2018273648</td>
+    <td>17</td>
+    <td>20</td>
+	<td>19</td>
+	<td>25</td>
+  </tr>
+  <tr>
+    <td>2018663849</td>
+    <td>17</td>
+    <td>15</td>
+	<td>28</td>
+	<td>28</td>
+  </tr>
+  <tr>
+    <td>2018663952</td>
+    <td>18</td>
+    <td>17</td>
+	<td>25</td>
+	<td>20</td>
+  </tr>
+  <tr>
+    <td>2018663023</td>
+    <td>10</td>
+    <td>20</td>
+	<td>28</td>
+	<td>28</td>
+  </tr>
+  <tr>
+    <td>2018479502</td>
+    <td>18</td>
+    <td>19</td>
+	<td>28</td>
+	<td>22</td>
+  </tr>
+  <tr>
+    <td>2018475976</td>
+    <td>14</td>
+    <td>16</td>
+	<td>13</td>
+	<td>20</td>
+  </tr>
+</table>
+</div>
+
+<div id="KCS1104I" class="tabcontent">
+	<table>
+  <tr>
+    <th>ID</th>
+    <th>Assignment 1 (20%)</th>
+    <th>Assignment 2 (20%)</th>
+	<th>Test 1 (30%)</th>
+	<th>Test 2 (30%)</th>
+  </tr>
+  <tr>
+    <td>2018293759</td>
+    <td>19</td>
+    <td>18</td>
+	<td>24</td>
+	<td>27</td>
+  </tr>
+  <tr>
+    <td>2018985293</td>
+    <td>17</td>
+    <td>15</td>
+	<td>28</td>
+	<td>28</td>
+  </tr>
+  <tr>
+    <td>2018924499</td>
+    <td>18</td>
+    <td>17</td>
+	<td>25</td>
+	<td>30</td>
+  </tr>
+  <tr>
+    <td>2018217935</td>
+    <td>10</td>
+    <td>14</td>
+	<td>12</td>
+	<td>11</td>
+  </tr>
+  <tr>
+    <td>2018940043</td>
+    <td>10</td>
+    <td>10</td>
+	<td>20</td>
+	<td>20</td>
+  </tr>
+  <tr>
+    <td>2018152739</td>
+    <td>19</td>
+    <td>15</td>
+	<td>23</td>
+	<td>14</td>
+  </tr>
+</table>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</div>
+
+<script>
+function openClass(evt, cName) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace("active", "");
+  }
+  document.getElementById(cName).style.display = "block";
+  evt.currentTarget.className += "active";
+}
+</script>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+  </div>
+
+
+  
+  <!------------------------------------- Setup ------------------------------------->
+  
+	<div class="w3-container" id="setupcm" style="margin-top:75px">
+		<h1 class="w3-xxxlarge w3-text-red"><b>Setup : Carry Marks</b></h1>
+		<hr style="width:50px;border:5px solid red" class="w3-round">
+	</div> 
+	
+	<form action="/action_page.php">
+	
+	<table>
+			<tr>
+			
+				<td>Semester: </td><br>
+				<td><select name="class" class="form-control selectpicker"/>
+				<option value=" " >Please select semester</option>
+				<option>Sesi 1 2018/2019</option>
+				<option>Sesi 2 2018/2019</option>
+				<option>Sesi 1 2019/2020</option>
+				<option>Sesi 2 2019/2020</option>
+				</select>
+				</td></br>
+				
+				<td>Teaching Class: </td><br>
+				<td><select name="class" class="form-control selectpicker"/>
+				<option value=" " >Please select subject</option>
+				<option>KCS1104A</option>
+				<option>KCS1104B</option>
+				<option>KCS1104C</option>
+				<option>KCS1104D</option>
+				<option>KCS1104E</option>
+				<option>KCS1104F</option>
+				<option>KCS1104G</option>
+				<option>KCS1104H</option>
+				<option>KCS1104I</option>
+				</select>
+				</td></br>
+			</tr>
+
+			<tr>
+			
+			
+			<td>Subject: </td>
+				<td><select name="class" class="form-control selectpicker"/>
+				<option value=" " >Please select subject</option>
+				<option>CSC204</option>
+				<option>CSC248</option>
+				<option >CSC253</option>
+				<option >ITS332</option>
+				</select>
+				</td>
+			
+			
+				<tr><td> Assignment 1: </td>
+				<td><input  type="text" class="validate" placeholder="percentage (%)"></td></tr>
+				
+				<tr><td> Assignment 2: </td>
+				<td><input  type="text" class="validate" placeholder="percentage (%)"></td></tr>
+				
+				<tr><td> Test 1: </td>
+				<td><input  type="text" class="validate" placeholder="percentage (%)"></td></tr>
+				
+				<tr><td> Test 2: </td>
+				<td><input  type="text" class="validate" placeholder="percentage (%)"></td></tr>
+				
+				<tr><td> Project : </td>
+				<td><input  type="text" class="validate" placeholder="percentage (%)"></td></tr>
+				
+			<tr>
+				<td colspan="2" align="center">
+				<input type="submit" value="Submit">
+				<input type="reset" value="Reset">
+				</td>
+			</tr>	
+		</table>
+				
+	</form>	
+				
+				
+<!------------------------------------- Add ------------------------------------->
+
+	<div class="w3-container" id="addcm" style="margin-top:75px">
+		<h1 class="w3-xxxlarge w3-text-red"><b>Add : Carry Mark</b></h1>
+		<hr style="width:50px;border:5px solid red" class="w3-round">
+	</div>
+	
+	<table>
+			<tr>
+			
+				<td>Semester: </td>
+				<td><select name="class" class="form-control selectpicker"/>
+				<option value=" " >Please select semester</option>
+				<option>Sesi 1 2018/2019</option>
+				<option>Sesi 2 2018/2019</option>
+				<option>Sesi 1 2019/2020</option>
+				<option>Sesi 2 2019/2020</option>
+				</select>
+				</td>
+			
+				<td>Subject: </td>
+				<td><select name="class" class="form-control selectpicker"/>
+				<option value=" " >Please select subject</option>
+				<option>CSC204</option>
+				<option>CSC248</option>
+				<option >CSC253</option>
+				<option >ITS332</option>
+				</select>
+				</td>
+			</tr>
+			
+			</tr>
+			
+			</tr>
+			
+			
+			
+		</table>
+		<button type="button" class="w3-button w3-theme-d2 w3-margin-bottom"><i class="fa fa-submit"></i>Submit</button>
+		
+	<div class="w3-row-padding w3-grayscale">
+<div class="tab">
+  <button class="tablinks" onclick="openClasss(event, 'CS1104A')">KCS1104A</button>
+  <button class="tablinks" onclick="openClasss(event, 'CS1104G')">KCS1104G</button>
+  <button class="tablinks" onclick="openClasss(event, 'CS1104I')">KCS1104I</button>
+</div>
+
+<div id="CS1104A" class="tabcontent">
+	<table>
+  <tr>
+    <th>ID</th>
+    <th>Assignment 1 (20%)</th>
+    <th>Assignment 2 (20%)</th>
+	<th>Test 1 (30%)</th>
+	<th>Test 2 (30%)</th>
+	<th colspan="2" >Action</th>
+  </tr>
+  <tr>
+    <td>2018623947</td>
+    <td>15</td>
+    <td>17</td>
+	<td><input type="number""></td>
+	<td><input type="number""></td>
+	<td><input type="submit" value="Add"></td>
+	<td><input type="submit" value="Edit"></td>
+  </tr>
+  <tr>
+    <td>2018192804</td>
+    <td>20</td>
+    <td>19</td>
+	<td><input type="number""></td>
+	<td><input type="number""></td>
+	<td><input type="submit" value="Add"></td>
+	<td><input type="submit" value="Edit"></td>
+  </tr>
+  <tr>
+    <td>2018613456</td>
+    <td>18</td>
+    <td>16</td>
+	<td><input type="number""></td>
+	<td><input type="number""></td>
+	<td><input type="submit" value="Add"></td>
+	<td><input type="submit" value="Edit"></td>
+  </tr>
+  <tr>
+    <td>2018679809</td>
+    <td>16</td>
+    <td>9</td>
+	<td><input type="number""></td>
+	<td><input type="number""></td>
+	<td><input type="submit" value="Add"></td>
+	<td><input type="submit" value="Edit"></td>
+  </tr>
+  <tr>
+    <td>2018672839</td>
+    <td>8</td>
+    <td>19</td>
+	<td><input type="number""></td>
+	<td><input type="number""></td>
+	<td><input type="submit" value="Add"></td>
+	<td><input type="submit" value="Edit"></td>
+  </tr>
+  <tr>
+    <td>2018712983</td>
+    <td>14</td>
+    <td>20</td>
+	<td><input type="number""></td>
+	<td><input type="number""></td>
+	<td><input type="submit" value="Add"></td>
+	<td><input type="submit" value="Edit"></td>
+  </tr>
+</table>
+</div>
+
+<div id="CS1104G" class="tabcontent">
+	<table>
+  <tr>
+    <th>ID</th>
+    <th>Assignment 1 (20%)</th>
+    <th>Assignment 2 (20%)</th>
+	<th>Test 1 (30%)</th>
+	<th>Test 2 (30%)</th>
+	<th colspan="2">Action</th>
+  </tr>
+  <tr>
+    <td>2018273648</td>
+    <td>17</td>
+    <td>20</td>
+	<td><input type="number""></td>
+	<td><input type="number""></td>
+	<td><input type="submit" value="Add"></td>
+	<td><input type="submit" value="Edit"></td>
+  </tr>
+  <tr>
+    <td>2018663849</td>
+    <td>7</td>
+    <td>5</td>
+	<td><input type="number""></td>
+	<td><input type="number""></td>
+	<td><input type="submit" value="Add"></td>
+	<td><input type="submit" value="Edit"></td>
+  </tr>
+  <tr>
+    <td>2018663952</td>
+    <td>10</td>
+    <td>15</td>
+	<td><input type="number""></td>
+	<td><input type="number""></td>
+	<td><input type="submit" value="Add"></td>
+	<td><input type="submit" value="Edit"></td>
+  </tr>
+  <tr>
+    <td>2018663023</td>
+    <td>10</td>
+    <td>9</td>
+	<td><input type="number""></td>
+	<td><input type="number""></td>
+	<td><input type="submit" value="Add"></td>
+	<td><input type="submit" value="Edit"></td>
+  </tr>
+  <tr>
+    <td>2018479502</td>
+    <td>7</td>
+    <td>9</td>
+	<td><input type="number""></td>
+	<td><input type="number""></td>
+	<td><input type="submit" value="Add"></td>
+	<td><input type="submit" value="Edit"></td>
+  </tr>
+  <tr>
+    <td>2018475976</td>
+    <td>5</td>
+    <td>6</td>
+	<td><input type="number""></td>
+	<td><input type="number""></td>
+	<td><input type="submit" value="Add"></td>
+	<td><input type="submit" value="Edit"></td>
+  </tr>
+</table>
+</div>
+
+<div id="CS1104I" class="tabcontent">
+	<table>
+  <tr>
+    <th>ID</th>
+    <th>Assignment 1 (20%)</th>
+    <th>Assignment 2 (20%)</th>
+	<th>Test 1(30%)</th>
+	<th>Test 2(30%)</th>
+	<th colspan="2">Action</th>
+  </tr>
+  <tr>
+    <td>2018293759</td>
+    <td>6</td>
+    <td>8</td>
+	<td><input type="number""></td>
+	<td><input type="number""></td>
+	<td><input type="submit" value="Add"></td>
+	<td><input type="submit" value="Edit"></td>
+  </tr>
+  <tr>
+    <td>2018985293</td>
+    <td>7</td>
+    <td>15</td>
+	<td><input type="number""></td>
+	<td><input type="number""></td>
+	<td><input type="submit" value="Add"></td>
+	<td><input type="submit" value="Edit"></td>
+  </tr>
+  <tr>
+    <td>2018924499</td>
+    <td>8</td>
+    <td>17</td>
+	<td><input type="number""></td>
+	<td><input type="number""></td>
+	<td><input type="submit" value="Add"></td>
+	<td><input type="submit" value="Edit"></td>
+  </tr>
+  <tr>
+    <td>2018217935</td>
+    <td>19</td>
+    <td>9</td>
+	<td><input type="number""></td>
+	<td><input type="number""></td>
+	<td><input type="submit" value="Add"></td>
+	<td><input type="submit" value="Edit"></td>
+  </tr>
+  <tr>
+    <td>2018940043</td>
+    <td>10</td>
+    <td>10</td>
+	<td><input type="number""></td>
+	<td><input type="number""></td>
+	<td><input type="submit" value="Add"></td>
+	<td><input type="submit" value="Edit"></td>
+  </tr>
+  <tr>
+    <td>2018152739</td>
+    <td>20</td>
+    <td>20</td>
+	<td><input type="number""></td>
+	<td><input type="number""></td>
+	<td><input type="submit" value="Add"></td>
+	<td><input type="submit" value="Edit"></td>
+  </tr>
+</table>
+</div>
+
+<script>
+function openClasss(evt, cName) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace("active", "");
+  }
+  document.getElementById(cName).style.display = "block";
+  evt.currentTarget.className += "active";
+}
+</script>
+  </div>	
+	
+  <div class="info">
+    <fieldset style="width:900px">
+                <legend><b>Calculate Students Marks:</b></legend>
+                ID:<input placeholder="2018273648" type="number" id="txtName" >   
+                Class:<input placeholder="KCS1104G" type="text" id="txtClass" >
+				Subject:<input placeholder="CSC204" type="text" id="txtClass" ><br/><br/>
+				
+                    <tr><td>Assignment 1 : </td><td><input type="text" id="ass1"></td></tr><br>
+                    <tr><td>Assignment 2 : </td><td><input type="text" id="ass2"></td></tr><br>
+                    <tr><td>Test 1 : </td><td><input type="text" id="test1"></td></tr><br>
+                    <tr><td>Test 2 : </td><td><input type="text" id="test2"></td></tr><br>           
+                <br/>
+                <input type="button" value="Get Grade" onClick="getReport();"> 
+    </fieldset>
+	<h2>Result</h2>
+				
+				<table border="0">
+					<tr><td>ID</td><td><input type="text" id="txtStudentName" readonly></td></tr>
+					<tr><td>Class</td><td><input type="text" id="txtStudentClass" readonly></td></tr>
+					<tr><td>Total Marks</td><td><input type="text" id="txtTotalMarks" readonly></td></tr>
+					<tr><td>Grade</td><td><input type="text" id="txtGrade" readonly></td></tr>
+					<tr><td>Remarks</td><td><input type="text" id="txtResult" readonly></td></tr>
+				</table>
+			<script type="text/javascript">
+		
+		function getReport(){
+					var grade = "";	 //declare a variable for grade
+					var  result="";	 //declare a variable for result
+
+					//read the marks
+					var ass1 = document.getElementById('ass1').value;
+					var ass2 = document.getElementById('ass2').value;
+					var test1 = document.getElementById('test1').value;
+					var test2 = document.getElementById('test2').value;
+					
+					//calculate the total marks (using double notation technique)
+					var totalMarks = ass1 - (- ass2) - (- test1) - (- test2);
+					
+						
+					
+					//find the grade and result using the ternary operator inside the switch statement					
+					switch(
+					
+							//usage of ternary operator inside switch
+
+							(totalMarks > 70 && totalMarks <= 100) ? 1 : 
+							(totalMarks > 60 && totalMarks < 70) ? 2 : 
+							(totalMarks > 41 && totalMarks < 60) ? 3 : 0
+						  )
+							
+							{
+								case 1 :grade = "A";result="Great";break;
+								case 2 :grade = "B"; result="Not Bad";break;
+								case 3 :grade = "C"; result="Oh Come On";break;
+								case 0 :grade = "D"; result="May Miracle Help Them";break;
+							}
+							
+						
+					//display the results	
+					document.getElementById('txtStudentName').value = document.getElementById('txtName').value;
+					document.getElementById('txtStudentClass').value = document.getElementById('txtClass').value;
+					document.getElementById('txtTotalMarks').value = totalMarks;
+					document.getElementById('txtGrade').value = grade;
+					document.getElementById('txtResult').value = result;
+		
+		} //end of function getReport
+		</script>
+  </div>
+
+<!----------------------------------------- Delete --------------------------------------->
+
+	<div class="w3-container" id="deletecm" style="margin-top:75px">
+		<h1 class="w3-xxxlarge w3-text-red"><b>Delete : Carry Mark</b></h1>
+		<hr style="width:50px;border:5px solid red" class="w3-round">
+	</div>
+	<table>
+			<tr>
+				<td>Semester: </td>
+				<td><select name="class" class="form-control selectpicker"/>
+				<option value=" " >Please select semester</option>
+				<option>Sesi 1 2018/2019</option>
+				<option>Sesi 2 2018/2019</option>
+				<option>Sesi 1 2019/2020</option>
+				<option>Sesi 2 2019/2020</option>
+				</select>
+				</td>
+			
+				<td>Subject: </td>
+				<td><select name="class" class="form-control selectpicker"/>
+				<option value=" " >Please select subject</option>
+				<option>CSC204</option>
+				<option>CSC248</option>
+				<option >CSC253</option>
+				<option >ITS332</option>
+				</select>
+				</td>
+				
+				<td>Class: </td>
+				<td><select name="class" class="form-control selectpicker"/>
+				<option value=" " >Please select class</option>
+				<option>KCS1104A</option>
+				<option>KCS1104G</option>
+				<option >KCS1104I</option>
+				</select>
+				</td>
+			</tr>
+		</table>
+		<button type="button" class="w3-button w3-theme-d2 w3-margin-bottom"><i class="fa fa-submit"></i>Submit</button>
+		
+<div>
+<table id="myTable"> 
+    <tr>
+    	<th>Student ID</th>
+    	<th>Assignment 1 (20%)</th>
+    	<th>Assignment 2 (20%)</th> 
+    	<th>Test 1 (30%)</th>
+   		<th>Test 2 (30%)</th>
+    	<th>Action</th>
+  	</tr>
+
+  <tr>
+  	<td>2018273648</td>
+    <td>17</td>
+    <td>20</td>
+    <td>19</td>
+    <td>25</td>
+    <td><button onclick="myFunction()">Delete</button></td>
+  </tr>
+  
+  <tr>
+    <td>2018192804</td>
+    <td>17</td>
+    <td>15</td>
+	<td>18</td>
+	<td>8</td>
+    <td><button onclick="myFunction()">Delete</button></td>
+  </tr>
+  
+  <tr>
+    <td>2018613456</td>
+    <td>18</td>
+    <td>17</td>
+	<td>25</td>
+	<td>20</td>
+    <td><button onclick="myFunction()">Delete</button></td>
+  </tr>
+    
+    <tr>
+    <td>2018679809</td>
+    <td>16</td>
+    <td>10</td>
+	<td>18</td>
+	<td>18</td>
+    <td><button onclick="myFunction()">Delete</button></td>
+    </tr>
+    
+    <tr>
+    <td>2018672839</td>
+    <td>18</td>
+    <td>19</td>
+	<td>28</td>
+	<td>22</td>
+    <td><button onclick="myFunction()">Delete</button></td>
+    </tr>
+    
+    <tr>
+    <td>2018712983</td>
+    <td>14</td>
+    <td>15</td>
+	<td>13</td>
+	<td>30</td>
+    <td><button onclick="myFunction()">Delete</button></td>
+    </tr>
+</table>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br> 
+
+<script>
+function myFunction() {
+  document.getElementById("myTable").deleteRow(1);
+}
+</script>
+
+<!---------------------------------------- Comment ------------------------------>
+  <div class="w3-container" id="commentcm" style="margin-top:75px">
+    <h1 class="w3-xxxlarge w3-text-red"><b>Comment.</b></h1>
+    <hr style="width:50px;border:5px solid red" class="w3-round">
+    <p></p>
+	
+    <form action="/action_page.php" target="_blank">
+      <div class="w3-container w3-card w3-white w3-round w3-margin"><br>
+        <img src="https://wiki.d-addicts.com/images/thumb/e/ef/Woo_Do_Hwan.jpg/300px-Woo_Do_Hwan.jpg" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
+        <span class="w3-right w3-opacity">32 min</span>
+        <h4>Prof Wan</h4><br>
+        <hr class="w3-clear">
+        <p>Assalamualaikum everyone.. thanks for your participation for today... 
+		for those who's not answering the questions, please do within today okay. 
+		see you again. thank you😊</p>
+        <img src="https://live.staticflickr.com/7626/27047326063_a43275feef_b.jpg" style="width:100%" class="w3-margin-bottom">
+		<button type="button" class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i>  Like</button> 
+        <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom"><i class="fa fa-comment"></i>  Comment</button> 
+      </div> 
+	 
+
+<!-- End page content -->
+</div>
+
+
+<script>
+// Script to open and close sidebar
+function w3_open() {
+  document.getElementById("mySidebar").style.display = "block";
+  document.getElementById("myOverlay").style.display = "block";
+}
+ 
+function w3_close() {
+  document.getElementById("mySidebar").style.display = "none";
+  document.getElementById("myOverlay").style.display = "none";
+}
+
+// Modal Image Gallery
+function onClick(element) {
+  document.getElementById("img01").src = element.src;
+  document.getElementById("modal01").style.display = "block";
+  var captionText = document.getElementById("caption");
+  captionText.innerHTML = element.alt;
+}
+</script>
+
+</body>
+</html>
