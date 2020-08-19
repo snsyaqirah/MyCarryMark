@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<title>Student</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="css/w3.css">
+<link rel="stylesheet" href="css/css.css">
+<style>
+body,h1,h2,h3,h4,h5 {font-family: "Poppins", sans-serif}
+body {font-size:16px;}
+.w3-half img{margin-bottom:-6px;margin-top:16px;opacity:0.8;cursor:pointer}
+.w3-half img:hover{opacity:1}
+
+table 
+{
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th 
+{
+  text-align: left;
+  padding: 8px;
+}
+
+.main-block {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      padding: 25px;
+      }
+	  .left-part, form {
+      padding: 25px;
+      }
+      .left-part {
+      text-align: center;
+      }
+      .fa-graduation-cap {
+      font-size: 72px;
+      }
+      form {
+      background: rgba(255, 255, 255, 0.7); 
+      }
+      .title {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+      }
+      .info {
+      display: flex;
+      flex-direction: column;
+      }
+      input, select {
+      padding: 5px;
+      margin-bottom: 30px;
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid #9c27b0;
+      }
+      input::placeholder {
+      color: purple;
+      }
+      option:focus {
+      border: none;
+      }
+      option {
+      background: white; 
+      border: none;
+      }
+      .checkbox input {
+      margin: 0 10px 0 0;
+      vertical-align: middle;
+      }
+      .checkbox a {
+      color: #26a9e0;
+      }
+      .checkbox a:hover {
+      color: #85d6de;
+      }
+      .btn-item, button {
+      padding: 10px 5px;
+      margin-top: 20px;
+      border-radius: 5px; 
+      border: none;
+      background: #26a9e0; 
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 400;
+      color: #fff;
+      }
+      .btn-item {
+      display: inline-block;
+      margin: 20px 5px 0;
+      }
+      button {
+      width: 100%;
+      }
+      button:hover, .btn-item:hover {
+      background: #85d6de;
+      }
+      @media (min-width: 568px) {
+      html, body {
+      height: 100%;
+      }
+      .main-block {
+      flex-direction: row;
+      height: calc(100% - 50px);
+      }
+      .left-part, form {
+      flex: 1;
+      height: auto;
+      }
+	  .tab {
+		overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #ff775c;
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-size: 17px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #000;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color: #000;
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #000;
+  border-top: none;
+}
+
+table, td, th, tr {
+  text-align: center;
+}
+
+
+th {
+  text-align: center;
+}
+      }
+</style>
+<body>
+
+<!------------------------------------------------- Sidebar/menu ------------------------------------------------------------->
+<nav class="w3-sidebar w3-purple w3-collapse w3-top w3-large w3-padding" style="z-index:3;width:300px;font-weight:bold;" id="mySidebar"><br>
+  <a href="javascript:void(0)" onclick="w3_close()" class="w3-button w3-hide-large w3-display-topleft" style="width:100%;font-size:22px">Close Menu</a>
+  <div class="w3-container">
+    <h3 class="w3-padding-64"><b>Hi<br>Student</b></h3>
+  </div>
+  <div class="w3-bar-block">
+    <a href="#" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Home</a> 
+	<a class="w3-bar-item ">Manage Personal Details</a> 
+    <a href="#view" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">View & Edit</a> 
+	<a href="#enroll" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Enroll</a> 
+	<a class="w3-bar-item">Manage Carry Marks</a> 
+    <a href="#viewcm" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">View</a> 
+    <a href="result.html" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Print</a>
+	<a href="#commentcm" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Comment</a>
+	<a href="../index.html" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Log Out</a>
+  </div>
+</nav>
+
+<!-- Top menu on small screens -->
+<header class="w3-container w3-top w3-hide-large w3-purple w3-xlarge w3-padding">
+  <a href="javascript:void(0)" class="w3-button w3-purple w3-margin-right" onclick="w3_open()">☰</a>
+  <span>Mycarrymark</span>
+</header>
+
+<!-- Overlay effect when opening sidebar on small screens -->
+<div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+<!-- !PAGE CONTENT! -->
+<div class="w3-main" style="margin-left:340px;margin-right:40px">
+
+
+ <!---------------------------------------------- Header --------------------------------------------------------------------------->
+	
+	<div class="w3-container" style="margin-top:80px" id="#">
+		<h1 class="w3-jumbo"><b>MyCarryMark</b></h1>  
+		<hr style="width:50px;border:5px solid purple" class="w3-round">
+		<div class="w3-container">
+ 
+ <h2>HOME</h2>
+
+<div class="w3-content" style="max-width:1200px">
+  <img class="mySlides" src="img/1.jpg" style="width:100%;display:none">
+  <img class="mySlides" src="img/2.jpg" style="width:100%">
+  <img class="mySlides" src="img/3.jpg" style="width:100%;display:none">
+
+  <div class="w3-row-padding w3-section">
+    <div class="w3-col s4">
+      <img class="demo w3-opacity w3-hover-opacity-off" src="img/1.jpg" style="width:100%;cursor:pointer" onclick="currentDiv(1)">
+    </div>
+    <div class="w3-col s4">
+      <img class="demo w3-opacity w3-hover-opacity-off" src="img/2.jpg" style="width:100%;cursor:pointer" onclick="currentDiv(2)">
+    </div>
+    <div class="w3-col s4">
+      <img class="demo w3-opacity w3-hover-opacity-off" src="img/3.jpg" style="width:100%;cursor:pointer" onclick="currentDiv(3)">
+    </div>
+  </div>
+</div>
+
+<script>
+function currentDiv(n) {
+  showDivs(slideIndex = n);
+}
+
+function showDivs(n) {
+  var i;
+  var x = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("demo");
+  if (n > x.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = x.length}
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" w3-opacity-off", "");
+  }
+  x[slideIndex-1].style.display = "block";
+  dots[slideIndex-1].className += " w3-opacity-off";
+}
+</script>
+		<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+	</div>
+	
+<!----------------------------------View & Edit Personal Detail------------------------------>
+  <div class="w3-container" style="margin-top:80px" id="view">
+		    <h1 class="w3-xxxlarge w3-text-purple"><b>View : Student Details</b></h1>
+			<p id="editview">
+
+			<div class="info">
+            <label for="name">Full Name : </label>
+			<input  type="text" class="validate" value="Lee Min Ho" readonly="readonly">
+
+              <label for="user_name">Username : </label>
+              <input  type="text" class="validate" value="MinhoComey" readonly="readonly">
+			  
+              <label for="pass">Password : </label>
+              <input id="pass" type="password" class="validate" value="kingleegon" readonly="readonly">
+			  
+              <label for="textarea1">Address : </label>
+			  <input id="textarea1" value="Lot 3271, Jalan Taman Mahsuri, Taman Mahsuri" class="form-control" type="text" rows="1" cols="70" readonly></input>
+
+			  <label for="city">City : </label>
+              <input id="city" type="text" class="validate" value="Butterworth" readonly="readonly">
+
+			  <label for="state">State : </label>
+              <input id="state" type="text" class="validate" value="Penang" readonly="readonly">
+
+			  <label for="zip">Zip Code : </label>
+              <input id="zip" type="number" class="validate" value="13800" readonly="readonly">
+
+			  <label for="country">Country : </label>
+              <input id="country" type="text" class="validate" value="Malaysia" readonly="readonly">
+
+              <label for="phone">Phone : </label>
+              <input id="phone" type="number" class="validate" value="0195032507" readonly="readonly">
+
+              <label for="email">Email : </label>
+              <input id="email" type="email" class="validate" value="leeminhoganteng@yahoo.com" readonly="readonly">
+
+			  <label for="status">Martial Status : </label>
+			  <input id="status" type="text" class="validate" value="Taken" readonly="readonly">
+			  
+			  
+			<p id="demo"></p>
+			</div>
+			</p>
+
+			<tr>
+			<td colspan=>
+				<button onclick="myFunction()">Edit</button>
+				<button type="button" class="w3-button w3-theme-d2 w3-margin-bottom"><i class="fa fa-submit"></i>Submit</button>
+			</td>
+			</tr>
+			
+			<script>
+			function myFunction() {
+			document.getElementById("editview").contentEditable = true;
+			document.getElementById("demo").innerHTML = "Edit Mode";
+			}
+			</script>
+			
+			
+ 
+   <!------------------------------------------------------- Enroll ---------------------------------------------------------->
+  <div class="w3-container" id="enroll" style="margin-top:75px">
+    <h1 class="w3-xxxlarge w3-text-purple"><b>Enroll : Carry Mark</b></h1>
+    <hr style="width:50px;border:5px solid purple" class="w3-round">
+  </div>
+  
+	<div>
+		<tr>
+			<br></br>
+			<td>Register ID: </td>
+			<td><input  name="stu_id" placeholder="000001" class="form-control" type="number" readonly="readonly"></td><br>
+			<td>Student ID: </td>
+			<td><input  name="stu_id" placeholder="2018273648" class="form-control" type="number" readonly="readonly"></td><br>
+			<td>Date Enroll: </td>
+			<td><input  name="stu_id" placeholder="15/06/2020" class="form-control" type="number" readonly="readonly"></td><br>
+			<td>Class: </td>
+			<td><input  name="stu_id" placeholder="KCS1104G" class="form-control" type="text" readonly="readonly"></td><br>
+		</tr>
+		
+		<tr>
+			<td colspan=>
+				<button onclick="myFunction()">Edit</button>
+				<button type="button" class="w3-button w3-theme-d2 w3-margin-bottom"><i class="fa fa-submit"></i>Submit</button>
+			</td>
+			</tr>
+	</div>
+ <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+ 
+ 
+  <!--------------------------------------------- View Carry Mark------------------------------------------------>
+  <div class="w3-container" id="viewcm" style="margin-top:75px">
+    <h1 class="w3-xxxlarge w3-text-purple"><b>View : Carry Mark</b></h1>
+    <hr style="width:50px;border:5px solid purple" class="w3-round">
+  </div>
+ 
+  
+  	<form action="form.php" method="POST">	
+		<table>
+			<tr>
+			
+				<td>Semester: </td>
+				<td><select name="class" class="form-control selectpicker"/>
+				<option value=" " >Please select semester</option>
+				<option>Sesi 1 2018/2019</option>
+				<option>Sesi 2 2018/2019</option>
+				<option>Sesi 1 2019/2020</option>
+				<option>Sesi 2 2019/2020</option>
+				</select>
+				</td>
+			
+				<td>Subject: </td>
+				<td><select name="class" class="form-control selectpicker"/>
+				<option value=" " >Please select subject</option>
+				<option>CSC204</option>
+				<option>CSC248</option>
+				<option >CSC253</option>
+				<option >ITS332</option>
+				</select>
+				</td>
+			</tr>
+		</table>
+		<button type="button" class="w3-button w3-theme-d2 w3-margin-bottom"><i class="fa fa-submit"></i>Submit</button>
+		
+		<br><br><br>
+		
+		<div>
+		<label for="name">Name : </label>
+		<input  type="text" class="validate" value="Lee Min Ho" readonly="readonly">
+		
+		<label for="stuid">Student ID : </label>
+		<input  type="text" class="validate" value="2018273648" readonly="readonly">
+		
+		<label for="class">Class : </label>
+		<input  type="text" class="validate" value="KCS1104G" readonly="readonly">
+			
+		<table border=1 width=40% height=30%>
+			<tr align="center">
+				<th>Assignment 1 (20%)</th>
+				<th>Assignment 2 (20%)</th>
+				<th>Test 1 (30%)</th>
+				<th>Test 2 (30%)</th>
+			</tr>
+				<tbody align=middle>
+			<tr align="center">
+				<td>17</td>
+				<td>20</td>
+				<td>19</td>
+				<td>25</td>
+			</tr>
+		</table>
+		<br><br>
+		<tr>
+				<td>Total Assesment :</td>
+				<td><input  name="tass" value="81%" class="form-control" type="text" readonly="readonly"></td><br>
+		</div>
+	</form>
+	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+  
+  <!------------------------------------- Print ------------------------------------->
+	<div class="w3-container" id="print" style="margin-top:75px">
+		<h1 class="w3-xxxlarge w3-text-purple"><b>Print : Carry Marks</b></h1>
+		<hr style="width:50px;border:5px solid purple" class="w3-round">
+	</div> 
+	
+
+	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+<!---------------------------------------- Comment ------------------------------>
+  <div class="w3-container" id="commentcm" style="margin-top:75px">
+    <h1 class="w3-xxxlarge w3-text-purple"><b>Comment.</b></h1>
+    <hr style="width:50px;border:5px solid purple" class="w3-round">
+    <p></p>
+	
+    <form action="/action_page.php" target="_blank">
+      <div class="w3-container w3-card w3-white w3-round w3-margin"><br>
+        <img src="https://aphrodite.gmanetwork.com/entertainment/articles/900_675_Main_Image13_0303__20200303135742.jpg" alt="Avatar" class="w3-left w3-square w3-margin-right" style="width:100px">
+        <span class="w3-right w3-opacity">32 min</span>
+        <h4>Lee Min Ho</h4><br>
+        <hr class="w3-clear">
+        <p>When life locks you in your room, simply go out the window.</p>
+        <img src="https://www.wishesmsg.com/wp-content/uploads/Inspirational-Life-Quotes-The-secret-of-life.jpg" style="width:100%" class="w3-margin-bottom">
+		<button type="button" class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i>  Like</button> 
+        <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom"><i class="fa fa-comment"></i>  Comment</button> 
+      </div> 
+	  
+	  </form>
+  </div>
+
+<!-- End page content -->
+</div>
+
+
+<script>
+// Script to open and close sidebar
+function w3_open() {
+  document.getElementById("mySidebar").style.display = "block";
+  document.getElementById("myOverlay").style.display = "block";
+}
+ 
+function w3_close() {
+  document.getElementById("mySidebar").style.display = "none";
+  document.getElementById("myOverlay").style.display = "none";
+}
+
+// Modal Image Gallery
+function onClick(element) {
+  document.getElementById("img01").src = element.src;
+  document.getElementById("modal01").style.display = "block";
+  var captionText = document.getElementById("caption");
+  captionText.innerHTML = element.alt;
+}
+</script>
+
+</body>
+</html>
